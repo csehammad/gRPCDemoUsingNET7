@@ -1,0 +1,38 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+
+option csharp_namespace = "gRPCUsingNET7Demo";
+
+
+package sales;
+
+service SalesService {
+
+rpc GetSalesData(Request) returns (stream SalesDataModel) {}
+ 
+}
+
+
+message Request{
+string filters=1;
+
+}
+
+
+message SalesDataModel {
+  int32 OrderID = 1;
+  string Region = 2;  
+  string Country = 3;
+  string ItemType=4;
+  google.protobuf.Timestamp OrderDate=5;
+  google.protobuf.Timestamp ShipDate=6;
+  int32 UnitsSold=7;
+  float UnitCost=8;
+  float UnitPrice=9;
+  int32 TotalRevenue=10;
+  int32 TotalCost=11;
+  int32 TotalProfit=12;
+  
+  
+}
